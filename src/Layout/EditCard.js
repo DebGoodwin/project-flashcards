@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams, useHistory } from "react-router-dom";
 import { readCard, updateCard, readDeck } from "../utils/api/index";
+import CardForm from "./CardForm";
 
 function EditCard() {
     const history = useHistory();
@@ -24,12 +25,12 @@ function EditCard() {
       getDeck(deckId);
     }, [deckId, cardId]);
 
-    const handleFrontChange = (e) => {
+    const cardFrontChange = (e) => {
         e.preventDefault();
         setCard({ ...card, front: e.target.value });
     } 
 
-    const handleBackChange = (e) => {
+    const cardBackChange = (e) => {
         e.preventDefault();
         setCard({ ...card, back: e.target.value });
     }
@@ -44,7 +45,6 @@ function EditCard() {
         history.push(`/decks/${deckId}`);
       };
 
-
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -57,14 +57,11 @@ function EditCard() {
           
             <h3>Edit Card</h3>
             <form>
-                <div className="form-group">
-                    <label htmlFor="front">Front</label>
-                    <textarea className="form-control" type="text" id="front" name="front" value={card.front} onChange={handleFrontChange}></textarea>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="back">Back</label>
-                    <textarea className="form-control" type="text" id="back" name="back" value={card.back} onChange={handleBackChange}></textarea>
-                </div>
+                <CardForm
+                    card={card}
+                    cardFrontChange={cardFrontChange}
+                    cardBackChange={cardBackChange}
+                />
                 <button className="m-2 btn btn-secondary" type="cancel" onClick={handleDone}>Cancel</button>
                 <button  className="m-2 btn btn-primary" type="submit" onClick={handleSubmit} >Submit</button>
             </form>

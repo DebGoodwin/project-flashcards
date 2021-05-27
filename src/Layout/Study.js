@@ -64,7 +64,7 @@ function Study() {
         <h4>Study: {deck.name}</h4>
         <div className="card">
             <div className="card-body">
-            <h5 ckassName="card-title">Card {cardIndex+1} of {cards.length}</h5>
+            <h5 className="card-title">Card {cardIndex+1} of {cards.length}</h5>
             <p className="card-text">{front ? cards[cardIndex].front : cards[cardIndex].back} </p>
             <button className="btn btn-secondary" onClick={flipHandler}>Flip</button>  &nbsp;
             {front ? null : <button className="btn btn-primary" onClick={nextHandler}>Next</button>}

@@ -26,7 +26,7 @@ function DisplayCards(props) {
                     <div className="col-sm-6">
                         <div className="card">
                             <div className="card-body">
-                                <p class="card-text">{front}</p>
+                                <p className="card-text">{front}</p>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@ function DisplayCards(props) {
                     <div className="col-sm-6">
                         <div className="card">
                             <div className="card-body">
-                                <p class="card-text">{back}</p>
+                                <p className="card-text">{back}</p>
                             </div>
                         </div>
                     </div>

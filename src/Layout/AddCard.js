@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams, useHistory } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api/index";
+import CardForm from "./CardForm";
 
 function AddCard() {
-    const history = useHistory();
     let { deckId } = useParams();
+    const history = useHistory();
 
     const initialState = {
         front:"",
@@ -25,12 +26,12 @@ function AddCard() {
         getDeck(deckId);
       }, [deckId]);
     
-    const cardFrontHandleChange = (e) => {
+    const cardFrontChange = (e) => {
         e.preventDefault();
         setCard({ ...card, front: e.target.value });
     } 
 
-    const cardBackHandleChange = (e) => {
+    const cardBackChange = (e) => {
         e.preventDefault();
         setCard({ ...card, back: e.target.value });
     }
@@ -58,14 +59,11 @@ function AddCard() {
             
                 <h3>{deck.name}: Add Card</h3>
                 <form>
-                    <div className="form-group">
-                        <label htmlFor="front">Front</label>
-                        <textarea className="form-control" type="text" id="front" name="front" value={card.front} placeholder="Front side of card" onChange={cardFrontHandleChange}></textarea>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="back">Back</label>
-                        <textarea className="form-control" type="text" id="back" name="back" value={card.back} placeholder="Back side of card" onChange={cardBackHandleChange}></textarea>
-                    </div>
+                    <CardForm
+                        card={card}
+                        cardFrontChange={cardFrontChange}
+                        cardBackChange={cardBackChange}
+                    />
                     <button className="m-2 btn btn-secondary" type="cancel" onClick={handleDone}>Done</button>
                     <button  className="m-2 btn btn-primary" type="submit" onClick={handleSubmit} >Save</button>
                 </form>
