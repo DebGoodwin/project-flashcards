@@ -5,11 +5,16 @@ Designed to allow the user to create, edit, and study decks of flashcards.
 
 
 ## Links
+
 * [Live Demo](https://project-flashcards-qualified-1-liard.vercel.app/)
 
 
 ### API interface:
-- Built to interface with a Flashcard server
+ Built to interface with a Flashcard server
+ - To run server locally:
+  1. Fork & clone repository
+  1. npm install
+  1. npm run start:server 
 
 
 ## Screenshots
